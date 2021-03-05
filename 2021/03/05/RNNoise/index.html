@@ -6,12 +6,12 @@
   
   <title>RNNoise | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#x75;&amp;#x61;&amp;#x6e;&amp;#x67;&amp;#107;&amp;#101;&amp;#108;&amp;#97;&amp;#110;&amp;#64;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#x69;&amp;#x6f;&amp;#97;&amp;#46;&amp;#x61;&amp;#x63;&amp;#46;&amp;#99;&amp;#110; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
+  <meta name="description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#x75;&amp;#x61;&amp;#x6e;&amp;#103;&amp;#107;&amp;#101;&amp;#108;&amp;#x61;&amp;#x6e;&amp;#x40;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#111;&amp;#97;&amp;#x2e;&amp;#97;&amp;#x63;&amp;#46;&amp;#99;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RNNoise">
 <meta property="og:url" content="http://example.com/2021/03/05/RNNoise/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#x75;&amp;#x61;&amp;#x6e;&amp;#x67;&amp;#107;&amp;#101;&amp;#108;&amp;#97;&amp;#110;&amp;#64;&amp;#109;&amp;#x61;&amp;#x69;&amp;#108;&amp;#x2e;&amp;#x69;&amp;#x6f;&amp;#97;&amp;#46;&amp;#x61;&amp;#x63;&amp;#46;&amp;#99;&amp;#110; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
+<meta property="og:description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#x75;&amp;#x61;&amp;#x6e;&amp;#103;&amp;#107;&amp;#101;&amp;#108;&amp;#x61;&amp;#x6e;&amp;#x40;&amp;#109;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#111;&amp;#97;&amp;#x2e;&amp;#97;&amp;#x63;&amp;#46;&amp;#99;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNN">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="c:/Users/Lagolas/Desktop/Blog/imag/屏幕截图.png">
 <meta property="article:published_time" content="2021-03-05T01:07:21.000Z">
@@ -102,7 +102,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#x6b;&#x75;&#x61;&#x6e;&#x67;&#107;&#101;&#108;&#97;&#110;&#64;&#109;&#x61;&#x69;&#108;&#x2e;&#x69;&#x6f;&#97;&#46;&#x61;&#x63;&#46;&#99;&#110;">&#x6b;&#x75;&#x61;&#x6e;&#x67;&#107;&#101;&#108;&#97;&#110;&#64;&#109;&#x61;&#x69;&#108;&#x2e;&#x69;&#x6f;&#97;&#46;&#x61;&#x63;&#46;&#99;&#110;</a></p>
+        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#x6b;&#x75;&#x61;&#x6e;&#103;&#107;&#101;&#108;&#x61;&#x6e;&#x40;&#109;&#97;&#x69;&#x6c;&#x2e;&#105;&#111;&#97;&#x2e;&#97;&#x63;&#46;&#99;&#x6e;">&#x6b;&#x75;&#x61;&#x6e;&#103;&#107;&#101;&#108;&#x61;&#x6e;&#x40;&#109;&#97;&#x69;&#x6c;&#x2e;&#105;&#111;&#97;&#x2e;&#97;&#x63;&#46;&#99;&#x6e;</a></p>
 <p>随性写写吧，就当自己的工作总结，防止自己以后都忘了。</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>RNNnoise是一个小型的语音增强的库，针对加性噪声（非卷积噪声）进行处理的库。作者使用了许多种降低算法计算量的方法，诸如使用小型的GRU、使用精度为int8的权重等等，以便算法可以在低计算资源的设备上实时运行。更重要的是，RNNoise的前置处理和后置处理是一个经典的“套路”，作者在之后的PercepNet等网络均使用这些方法，本质上说是对RNNoise的拓展。</p>
 <p>先说下整个系统的输入，48K的带噪语音，输出是48K的降噪语音以及一个每帧VAD的概率。</p>
@@ -112,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/05/RNNoise/" data-id="cklvmx2pc0000gopz5upkcj42" data-title="RNNoise" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/05/RNNoise/" data-id="cklvniw000000o8pzgey76or0" data-title="RNNoise" class="article-share-link">Share</a>
       
       
       
