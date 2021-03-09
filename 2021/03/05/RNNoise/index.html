@@ -6,20 +6,23 @@
   
   <title>RNNoise | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#117;&amp;#97;&amp;#110;&amp;#103;&amp;#x6b;&amp;#101;&amp;#108;&amp;#x61;&amp;#110;&amp;#64;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#x6f;&amp;#x61;&amp;#46;&amp;#97;&amp;#x63;&amp;#46;&amp;#x63;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
+  <meta name="description" content="作者: Kelan KuangEmail: &amp;#107;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#103;&amp;#x6b;&amp;#x65;&amp;#108;&amp;#x61;&amp;#110;&amp;#64;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#x6f;&amp;#97;&amp;#46;&amp;#x61;&amp;#x63;&amp;#46;&amp;#99;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RNNoise">
 <meta property="og:url" content="http://example.com/2021/03/05/RNNoise/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="作者: Kelan KuangEmail: &amp;#x6b;&amp;#117;&amp;#97;&amp;#110;&amp;#103;&amp;#x6b;&amp;#101;&amp;#108;&amp;#x61;&amp;#110;&amp;#64;&amp;#x6d;&amp;#97;&amp;#x69;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#x6f;&amp;#x61;&amp;#46;&amp;#97;&amp;#x63;&amp;#46;&amp;#x63;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
+<meta property="og:description" content="作者: Kelan KuangEmail: &amp;#107;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#103;&amp;#x6b;&amp;#x65;&amp;#108;&amp;#x61;&amp;#110;&amp;#64;&amp;#x6d;&amp;#x61;&amp;#105;&amp;#x6c;&amp;#x2e;&amp;#105;&amp;#x6f;&amp;#97;&amp;#46;&amp;#x61;&amp;#x63;&amp;#46;&amp;#99;&amp;#x6e; 随性写写吧，就当自己的工作总结，防止自己以后都忘了。 前言RNNn">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://github.com/CaA23187/CaA23187.github.io/blob/master/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="c:/Users/Lagolas/Desktop/Blog/imag/bark频带.png">
+<meta property="og:image" content="c:/Users/Lagolas/Desktop/Blog/imag/流程框图.png">
+<meta property="og:image" content="c:/Users/Lagolas/Desktop/Blog/imag/梳状滤波器.png">
+<meta property="og:image" content="c:/Users/Lagolas/Desktop/Blog/imag/网络结构.png">
 <meta property="article:published_time" content="2021-03-05T01:07:21.000Z">
-<meta property="article:modified_time" content="2021-03-05T02:04:17.996Z">
+<meta property="article:modified_time" content="2021-03-09T03:01:31.911Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="-Speech Enhancement -DSP and DL Hybrid">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/CaA23187/CaA23187.github.io/blob/master/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta name="twitter:image" content="c:/Users/Lagolas/Desktop/Blog/imag/bark频带.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -102,16 +105,34 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#x6b;&#117;&#97;&#110;&#103;&#x6b;&#101;&#108;&#x61;&#110;&#64;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#105;&#x6f;&#x61;&#46;&#97;&#x63;&#46;&#x63;&#x6e;">&#x6b;&#117;&#97;&#110;&#103;&#x6b;&#101;&#108;&#x61;&#110;&#64;&#x6d;&#97;&#x69;&#x6c;&#x2e;&#105;&#x6f;&#x61;&#46;&#97;&#x63;&#46;&#x63;&#x6e;</a></p>
+        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#107;&#x75;&#97;&#x6e;&#103;&#x6b;&#x65;&#108;&#x61;&#110;&#64;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#105;&#x6f;&#97;&#46;&#x61;&#x63;&#46;&#99;&#x6e;">&#107;&#x75;&#97;&#x6e;&#103;&#x6b;&#x65;&#108;&#x61;&#110;&#64;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#105;&#x6f;&#97;&#46;&#x61;&#x63;&#46;&#99;&#x6e;</a></p>
 <p>随性写写吧，就当自己的工作总结，防止自己以后都忘了。</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>RNNnoise是一个小型的语音增强的库，针对加性噪声（非卷积噪声）进行处理的库。作者使用了许多种降低算法计算量的方法，诸如使用小型的GRU、使用精度为int8的权重等等，以便算法可以在低计算资源的设备上实时运行。更重要的是，RNNoise的前置处理和后置处理是一个经典的“套路”，作者在之后的PercepNet等网络均使用这些方法，本质上说是对RNNoise的拓展。</p>
 <p>先说下整个系统的输入，48K的带噪语音，输出是48K的降噪语音以及一个每帧VAD的概率。</p>
-<p><img src="https://github.com/CaA23187/CaA23187.github.io/blob/master/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="RNNoise划分的24个频带，根据听觉响应来划分的，实际上代码中使用的是Opus频带"></p>
+<p><img src="C:\Users\Lagolas\Desktop\Blog\imag\bark频带.png" alt="RNNoise划分的24个频带，根据听觉响应来划分的，实际上代码中使用的是Opus频带"></p>
+<h1 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h1><p>既然模型的最终目的是能在低功耗设备实时运行，网络的参数必然不能太大，因此RNNoise采取人工提取特征。整体流程图下图所示</p>
+<p><img src="C:\Users\Lagolas\Desktop\Blog\imag\流程框图.png" alt="RNNoise流程图"></p>
+<ol>
+<li>首先做短时傅里叶变换（STFT），然后对STFT提取22个BFCC（这一步可以参照MFCC，同样使用三角滤波器组，区别在于三角滤波器的边界是Opus频带的两个边界，同时为了避免第一个频带和最后一个频带没有重叠的部分，作者在这两个频带上的能量*2了），并且计算6个BFCC的一阶导数与二阶导数。</li>
+<li>由于仅使用22个BFCC容易损失谐波信息，因此为了使语音听起来更自然，对语音采取了梳状滤波器（用延时器，也就是一个FIR实现）。根据作者的理论，大部分噪声就在梳状滤波器主带内。梳状滤波器起到很好的抑制效果，同时作者设置了一个控制梳状滤波器的强度的变量（此变量在RNNoise中是通过其他特征计算出来的，而在改进版PercepNet中是由神经网络学习而来的）。对梳状滤波后的信号也做BFCC，然后提取包络（做DCT，并取前6个系数）</li>
+<li>在做梳状滤波器时需要估计基音周期（作者在PercepNet中使用RAPT估计），将此放入到特征里</li>
+<li>语音平稳性，这是一个通过连续的8帧BFCC算出来的一个系数。</li>
+</ol>
+<p>因此一共有22（BFCC）+6（BFCC一阶导数）+6（BFCC一阶导数）+6（前6个DCT）+1（基因周期）+1（平稳性）=42维特征</p>
+<p>梳状滤波器的频响如下图所示，在PercepNet中作者给出公式表达<br>$$<br>C_M(z)=\sum_{K=-M}^Mw_kz^{-kT} \tag{1}<br>$$<br>其中M是阶数，T是估计出的基音周期，$w_k$是窗函数, 满足$\sum_kw_k=1$。作者虽然这么写，但是我感觉实际上可能还是拿多个一阶的梳状滤波器串联起来，这些$w_k$们就是他们系数的卷积，然后分母再将其归一化就行。</p>
+<p><img src="C:\Users\Lagolas\Desktop\Blog\imag\梳状滤波器.png" alt="梳状滤波器"></p>
+<h1 id="前置滤波与后滤波"><a href="#前置滤波与后滤波" class="headerlink" title="前置滤波与后滤波"></a>前置滤波与后滤波</h1><ol>
+<li>语音信号处理中的经典的预处理–高通滤波，为了抑制口唇辐射啥的</li>
+<li>为了使算法更具有鲁棒性，对所有的输入信号都做一个随机的二阶滤波处理</li>
+<li>神经网络输入22个频带的增益后，因为缺少必要的混响，听起来干、不自然，做一个最大衰减的滤波</li>
+</ol>
+<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>这一块没啥好提的，就是几个全连接和GRU构成，值得一提的是作者为了计算速度，权重全部使用int8类型的数据，而且训练的时候是将梯度限制在-0.5到+0.5以内。此外22个增益和VAD的Loss对网络的权重是10 : 0.5（VAD没啥存在感的样子啊）。网络结构如下图所示</p>
+<p><img src="C:\Users\Lagolas\Desktop\Blog\imag\网络结构.png" alt="网络结构图"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/05/RNNoise/" data-id="cklvnpfdm0000uspzfh202jak" data-title="RNNoise" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/05/RNNoise/" data-id="ckm1fgehh00009opz0f7y1zgd" data-title="RNNoise" class="article-share-link">Share</a>
       
       
       
