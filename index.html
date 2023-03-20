@@ -1,103 +1,406 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KKL的博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="KKL的博客">
+<meta property="og:description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Kelan Kuang">
 <meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>KKL的博客</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KKL的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+          <div class="content index posts-expand">
+            
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-RNNoise" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/05/RNNoise/" class="article-date">
-  <time class="dt-published" datetime="2021-03-05T01:07:21.000Z" itemprop="datePublished">2021-03-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">语音信号处理</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/05/RNNoise/">RNNoise</a>
-    </h1>
-  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/20/TriU-Net_demo/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Author">
+      <meta itemprop="description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KKL的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/20/TriU-Net_demo/" class="post-title-link" itemprop="url">TriU-Net demo</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-20 19:12:21 / 修改时间：19:13:07" itemprop="dateCreated datePublished" datetime="2023-03-20T19:12:21+08:00">2023-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">语音信号处理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#x6b;&#x75;&#97;&#x6e;&#x67;&#x6b;&#101;&#108;&#97;&#x6e;&#x40;&#x6d;&#97;&#x69;&#x6c;&#46;&#105;&#111;&#x61;&#x2e;&#x61;&#x63;&#x2e;&#99;&#x6e;">&#x6b;&#x75;&#97;&#x6e;&#x67;&#x6b;&#101;&#108;&#97;&#x6e;&#x40;&#x6d;&#97;&#x69;&#x6c;&#46;&#105;&#111;&#x61;&#x2e;&#x61;&#x63;&#x2e;&#99;&#x6e;</a></p>
+          <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#107;&#x75;&#97;&#x6e;&#x67;&#107;&#x65;&#108;&#x61;&#x6e;&#64;&#109;&#x61;&#x69;&#x6c;&#46;&#105;&#111;&#97;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#x6e;">&#107;&#x75;&#97;&#x6e;&#x67;&#107;&#x65;&#108;&#x61;&#x6e;&#64;&#109;&#x61;&#x69;&#x6c;&#46;&#105;&#111;&#97;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#x6e;</a></p>
+<h1 id="Multi-Channel-Speech-Enhancement-results"><a href="#Multi-Channel-Speech-Enhancement-results" class="headerlink" title="Multi-Channel Speech Enhancement results"></a>Multi-Channel Speech Enhancement results</h1><p>This repo shows enhanced speech of TriU-Net and other models.</p>
+<h2 id="Real-recordings"><a href="#Real-recordings" class="headerlink" title="Real recordings"></a>Real recordings</h2><p>SNR: -5 dB</p>
+<p>Spk 1 is a 24-year-old male, while spk 2 is a 24-year-old female. Both spk 1 and spk 2 speek in Mandarin. </p>
+<table>
+  <tbody>
+    <tr>
+        <th>Signals </th>
+        <th>Spk 1 babble</th>
+        <th>Spk 2 babble</th>
+        <th>Spk 1 f16</th>
+        <th>Spk 2 f16</th>
+    </tr>
+    <tr>
+      <td>noise</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/9ULA_synth_kkl_babble_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/9ULA_synth_yzh_babble_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/9ULA_synth_kkl_f16_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_f16_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/9ULA_synth_yzh_f16_snr-5.wav" controls></td>
+    </tr>
+    <tr>
+      <td>clean</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/9ULA_kkl_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/9ULA_yzh_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/9ULA_kkl_clean.wav" controls></td>      
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/9ULA_yzh_clean.wav" controls></td>
+    </tr>
+    <tr>
+      <td>oracl MB-MVDR</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_babble_snr-5_pesq1.09_1.36.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_oracle_MBMVDR_kkl_babble_snr-5_pesq1.09_1.36.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_babble_snr-5_pesq1.06_1.27.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_oracle_MBMVDR_yzh_babble_snr-5_pesq1.06_1.27.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_f16_snr-5_pesq1.06_1.3.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_oracle_MBMVDR_kkl_f16_snr-5_pesq1.06_1.3.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_f16_snr-5_pesq1.04_1.25.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_oracle_MBMVDR_yzh_f16_snr-5_pesq1.04_1.25.wav" controls></td>
+    </tr>
+    <tr>
+      <td>EaBNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_babble_snr-5_pesq1.09_1.27.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_EaBNet_kkl_babble_snr-5_pesq1.09_1.27.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_babble_snr-5_pesq1.06_1.33.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_EaBNet_yzh_babble_snr-5_pesq1.06_1.33.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_f16_snr-5_pesq1.06_1.37.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_EaBNet_kkl_f16_snr-5_pesq1.06_1.37.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_f16_snr-5_pesq1.04_1.41.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_EaBNet_yzh_f16_snr-5_pesq1.04_1.41.wav" controls></td>
+    </tr>
+    <tr>
+      <td>FaSNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_babble_snr-5_pesq1.09_1.24.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_FaSNet_kkl_babble_snr-5_pesq1.09_1.24.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_babble_snr-5_pesq1.06_1.23.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_FaSNet_yzh_babble_snr-5_pesq1.06_1.23.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_f16_snr-5_pesq1.06_1.35.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_FaSNet_kkl_f16_snr-5_pesq1.06_1.35.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_f16_snr-5_pesq1.04_1.47.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_FaSNet_yzh_f16_snr-5_pesq1.04_1.47.wav" controls></td>
+    </tr>
+    <tr>
+      <td>Model A</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_babble_snr-5_pesq1.09_1.42.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_ModelA_kkl_babble_snr-5_pesq1.09_1.42.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_babble_snr-5_pesq1.06_1.26.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_ModelA_yzh_babble_snr-5_pesq1.06_1.26.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_f16_snr-5_pesq1.06_1.6.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_ModelA_kkl_f16_snr-5_pesq1.06_1.6.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_f16_snr-5_pesq1.04_1.77.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_ModelA_yzh_f16_snr-5_pesq1.04_1.77.wav" controls></td>
+    </tr>
+    <tr>
+        <td><b>TriU-Net</b></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_babble_snr-5_pesq1.09_1.7.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_TriU-Net_kkl_babble_snr-5_pesq1.09_1.7.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_babble_snr-5_pesq1.06_1.65.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_TriU-Net_yzh_babble_snr-5_pesq1.06_1.65.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_f16_snr-5_pesq1.06_1.84.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_TriU-Net_kkl_f16_snr-5_pesq1.06_1.84.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_f16_snr-5_pesq1.04_1.9.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_TriU-Net_yzh_f16_snr-5_pesq1.04_1.9.wav" controls></td>
+    </tr>
+  </tbody>
+  <colgroup>
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+  </colgroup>
+</table>
+
+
+
+
+
+
+<h2 id="Synthetic-Data"><a href="#Synthetic-Data" class="headerlink" title="Synthetic Data"></a>Synthetic Data</h2><table>
+  <tbody>
+    <tr>
+        <th>Signals </th>
+        <th>Spk 1 SNR:-5.36 dB</th>
+        <th>Spk 2 SNR:-3.43 dB</th>
+    </tr>
+    <tr>
+      <td>noise</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_noisy.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_noisy.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_noisy.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_noisy.wav" controls></td>
+    </tr>
+    <tr>
+      <td>clean</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_clean.wav" controls></td>
+    </tr>
+    <tr>
+      <td>EaBNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_EaBNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_EaBNet.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_EaBNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_EaBNet.wav" controls></td>
+    </tr>
+    <tr>
+      <td>FaSNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_FaSNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_FaSNet.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_FaSNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_FaSNet.wav" controls></td>
+    </tr>
+    <tr>
+      <td>Model A</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_ModelA.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_ModelA.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_ModelA.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_ModelA.wav" controls></td>
+    </tr>
+    <tr>
+        <td><b>TriU-Net</b></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_TriU-Net.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_TriU-Net.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_TriU-Net.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_TriU-Net.wav" controls></td>
+    </tr>
+  </tbody>
+  <colgroup>
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+  </colgroup>
+</table>
+
+
+
+
+
+
+
+
+
+
+<h2 id="Other-samples"><a href="#Other-samples" class="headerlink" title="Other samples"></a>Other samples</h2><p>Other SNR scenarios  See <a target="_blank" rel="noopener" href="https://github.com/CaA23187/TriU-Net_demo">https://github.com/CaA23187/TriU-Net_demo</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/RNNoise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Author">
+      <meta itemprop="description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KKL的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/05/RNNoise/" class="post-title-link" itemprop="url">RNNoise</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-05 09:07:21" itemprop="dateCreated datePublished" datetime="2021-03-05T09:07:21+08:00">2021-03-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-02 17:59:12" itemprop="dateModified" datetime="2022-09-02T17:59:12+08:00">2022-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">语音信号处理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#x6b;&#117;&#97;&#x6e;&#103;&#107;&#x65;&#108;&#97;&#x6e;&#x40;&#x6d;&#97;&#x69;&#108;&#x2e;&#x69;&#x6f;&#97;&#x2e;&#97;&#x63;&#x2e;&#x63;&#x6e;">&#x6b;&#117;&#97;&#x6e;&#103;&#107;&#x65;&#108;&#97;&#x6e;&#x40;&#x6d;&#97;&#x69;&#108;&#x2e;&#x69;&#x6f;&#97;&#x2e;&#97;&#x63;&#x2e;&#x63;&#x6e;</a></p>
 <p>随性写写吧，就当自己的工作总结，防止自己以后都忘了。</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>RNNnoise是一个小型的语音增强的库，针对加性噪声（非卷积噪声）进行处理的库。作者使用了许多种降低算法计算量的方法，诸如使用小型的GRU、使用精度为int8的权重等等，以便算法可以在低计算资源的设备上实时运行。更重要的是，RNNoise的前置处理和后置处理是一个经典的“套路”，作者在之后的PercepNet等网络均使用这些方法，本质上说是对RNNoise的拓展。</p>
 <p>先说下整个系统的输入，48K的带噪语音，输出是48K的降噪语音以及一个每帧VAD的概率。</p>
@@ -105,12 +408,12 @@
 <h1 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h1><p>既然模型的最终目的是能在低功耗设备实时运行，网络的参数必然不能太大，因此RNNoise采取人工提取特征。整体流程图下图所示</p>
 <p><img src="C:\Users\Lagolas\Desktop\Blog\imag\流程框图.png" alt="RNNoise流程图"></p>
 <ol>
-<li>首先做短时傅里叶变换（STFT），然后对STFT提取22个BFCC（这一步可以参照MFCC，同样使用三角滤波器组，区别在于三角滤波器的边界是Opus频带的两个边界，同时为了避免第一个频带和最后一个频带没有重叠的部分，作者在这两个频带上的能量*2了），并且计算6个BFCC的一阶导数与二阶导数。</li>
+<li>首先做短时傅里叶变换（STFT，加窗采用的是Vorbis窗，分帧和合成时都需要加窗），然后对STFT提取22个BFCC（这一步可以参照MFCC，同样使用三角滤波器组，区别在于三角滤波器的边界是Opus频带的两个边界，同时为了避免第一个频带和最后一个频带没有重叠的部分，作者在这两个频带上的能量*2了），并且计算6个BFCC的一阶导数与二阶导数。</li>
 <li>由于仅使用22个BFCC容易损失谐波信息，因此为了使语音听起来更自然，对语音采取了梳状滤波器（用延时器，也就是一个FIR实现）。根据作者的理论，大部分噪声就在梳状滤波器主带内。梳状滤波器起到很好的抑制效果，同时作者设置了一个控制梳状滤波器的强度的变量（此变量在RNNoise中是通过其他特征计算出来的，而在改进版PercepNet中是由神经网络学习而来的）。对梳状滤波后的信号也做BFCC，然后提取包络（做DCT，并取前6个系数）</li>
 <li>在做梳状滤波器时需要估计基音周期（作者在PercepNet中使用RAPT估计），将此放入到特征里</li>
 <li>语音平稳性，这是一个通过连续的8帧BFCC算出来的一个系数。</li>
 </ol>
-<p>因此一共有22（BFCC）+6（BFCC一阶导数）+6（BFCC一阶导数）+6（前6个DCT）+1（基因周期）+1（平稳性）=42维特征</p>
+<p>因此一共有22（BFCC）+6（BFCC一阶导数）+6（BFCC二阶导数）+6（前6个DCT）+1（基因周期）+1（平稳性）=42维特征</p>
 <p>梳状滤波器的频响如下图所示，在PercepNet中作者给出公式表达<br>$$<br>C_M(z)=\sum_{K=-M}^Mw_kz^{-kT} \tag{1}<br>$$<br>其中M是阶数，T是估计出的基音周期，$w_k$是窗函数, 满足$\sum_kw_k=1$。作者虽然这么写，但是我感觉实际上可能还是拿多个一阶的梳状滤波器串联起来，这些$w_k$们就是他们系数的卷积，然后分母再将其归一化就行。</p>
 <p><img src="C:\Users\Lagolas\Desktop\Blog\imag\梳状滤波器.png" alt="梳状滤波器"></p>
 <h1 id="前置滤波与后滤波"><a href="#前置滤波与后滤波" class="headerlink" title="前置滤波与后滤波"></a>前置滤波与后滤波</h1><ol>
@@ -120,47 +423,89 @@
 </ol>
 <h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><p>这一块没啥好提的，就是几个全连接和GRU构成，值得一提的是作者为了计算速度，权重全部使用int8类型的数据，而且训练的时候是将梯度限制在-0.5到+0.5以内。此外22个增益和VAD的Loss对网络的权重是10 : 0.5（VAD没啥存在感的样子啊）。网络结构如下图所示</p>
 <p><img src="C:\Users\Lagolas\Desktop\Blog\imag\网络结构.png" alt="网络结构图"></p>
+<h1 id="RAPT"><a href="#RAPT" class="headerlink" title="RAPT"></a>RAPT</h1><p>在提取特征中一个重要的点就是基音周期的估计，分析纯净语音的频谱图可以看出，很多地方是存在谐波的，由语音信号处理的知识我们知道，人说话分为清音(Unoiced)和浊音(Voiced)，清音是高速气流在口腔中振动产生的，性质和噪声差不多吧？浊音是由声带振动产生的，明显存在基音和泛音，因此估计出正确的基音周期对梳状滤波十分关键。作者采用了RAPT进行估计，RAPT是1995年D. Talkin提出的一种基于自相关和动态规划的一种方法<a href="#ref"><sup>[1]</sup></a>。以下分为相关部分和动态规划部分详解。</p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p>在此先介绍RAPT使用的自相关方法，NCCF。NCCF即一种能量归一化后的自相关，即该延迟下的相关除以二者能量的开根，并且在计算NCCF前，最好将该帧均值置0<br>$$<br>\phi_{i,k}=\frac{\sum_{j=m}^{m+n-1}{s_js_{j+k}}}{\sqrt{e_me_{m+k}}},k=0,…,K-1;m=iz;i=0,…,M-1 \tag{2}<br>$$<br>其中<br>$$<br>e_j=\sum_{l=j}^{j+n-1}s_j^2<br>$$</p>
+<p>先放一张RAPT的常数表，这个现在不用看，等看到下面的时候再返回来看。<br><img src="C:\Users\Lagolas\Desktop\Blog\imag\RAPT常数表.png" alt="RAPT常数表"></p>
+<p>RAPT使用了两个不同频率的NCCF，一个是原始采样下的NCCF，一个是明显降低了许多的采样频率下的NCCF。降采样的频率如公式(3)所示<br>$$<br>F_{ds}=\frac{F_s}{[Fs/4F0_{max}]} \tag{3}<br>$$</p>
+<p>其中$[.]$表示最近取整函数，$F0_{max}$是搜索范围内的最大基音频率(因为基频不可能太高，为了降低计算量，将其限制在$F0_{max}=50Hz$到$F0_{max}=500Hz$之间)</p>
+<ol>
+<li>首先输入的一帧语音信号，先降采样至$F_{ds}$，做NCCF（一般的，做下采样时会做一个低通的FIR滤波，截至频率为$\frac{F_{ds}}{2}$，并且使用5ms的hanning窗（为啥我也不懂，怎么使用我也不懂））；</li>
+<li>在频率范围内$[\frac{F_{ds}}{F0_{max}},\frac{F_{ds}}{F0_{min}}]$ 搜索，如果相关大于CAND_TR*$\phi_{max}$，则被标记；</li>
+<li>把峰值附近的标记的连续3点做抛物线插值，找到峰值，并且如果峰值过多就保留最大的N_CANDS $—$ 1个峰（个人理解这里是因为降采样太多了，例如48K音频会降采样到2K，精度太低了，于是用抛物线插值提升些精度）；</li>
+<li>再将该帧语音信号以原始的采样频Fs率做NCCF，此时的NCCF中，分母的根号里需要加一个A_FACT，公式变为 $\phi_{i,k}=\frac{\sum_{j=m}^{m+n-1}{s_js_{j+k}}}{\sqrt{A_FACT*e_me_{m+k}}}$（为啥我也不知道）;</li>
+<li>在2中标记的点的附近7个点中搜索，如果相关大于CAND_TR*$\phi_{max}$，则被标记；</li>
+<li>取最大的N_CANDS $—$ 1个标记点。</li>
+</ol>
+<p>自相关部分到此结束，然后就是动态规划部分，这里另外提一下，抛物线插值公式可以用</p>
+<p>$$ x_p^* = 0.5(x_1+x_3-\frac{C_1}{C_2}) \tag{4} $$<br>$$C_1 = \frac{f_3 - f_1}{x_3-x_1}, C2=\frac{(f_2-f_1/(x_2-x_1)-C_1)}{x_2-x_3} $$</p>
+<p>其中$x_1，x_2，x_3$为抛物线上从左到右任意三点，而且$x_1<x_2>x_3$。因为这里采用连续3点进行插值，所以$x_3-x_2 = x_2-x_1$，假设令他们都等于1，公式(4)可以化简为公式(5)以便于计算</p>
+<p>$$ b = \frac{f_3-f_1}{4} \ a = f_2-f_1-2*b \ x_p = x_2 + \frac{b}{a}, f_p = f_2+\frac{b^2}{a^2} \tag{5}$$</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划这一部分是为了找到最佳的基音周期以及解决基因周期加倍/减半的问题，算是一种对自相关求基因周期方法的后处理。</p>
+<p>吐槽一句，RAPT论文，matlab代码，rnnoise中代码这一块各不相同，就很奇怪</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><div id="ref"></div>
+[1] D. Talkin. A robust algorithm for pitch tracking (RAPT). In Speech Coding and Synthesis, chapter 14, pages 495–518. Elsevier Science, 1995.
+
+
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio id=&quot;audio&quot; controls=&quot;&quot; preload=&quot;none&quot;&gt;</span><br><span class="line">      &lt;source id=&quot;wav&quot; src=&quot;https://github.com/Andong-Li-speech/EaBNet-Demo/blob/main/EaBNet/mixture_snr_-2_tar_doa_10_inte_doa_110_rt60_97ms_config_id_1043.wav&quot;&gt;</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line">&lt;iframe name=&quot;music&quot; src=&quot;https://github.com/Andong-Li-speech/EaBNet-Demo/blob/main/EaBNet/mixture_snr_-2_tar_doa_10_inte_doa_110_rt60_97ms_config_id_1043.wav&quot; marginwidth=&quot;1px&quot; marginheight=&quot;20px&quot; width=100% height=&quot;80px&quot; frameborder=1 　scrolling=&quot;yes&quot;&gt;</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/05/RNNoise/" data-id="ckm1g9h2r0000g4pz6gs6bvg0" data-title="RNNoise" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Speech-Enhancement-DSP-and-DL-Hybrid/" rel="tag">-Speech Enhancement -DSP and DL Hybrid</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/04/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2021-03-04T13:03:28.933Z" itemprop="datePublished">2021-03-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
-        
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/04/hello-world/">Hello World</a>
-    </h1>
+  
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Author">
+      <meta itemprop="description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KKL的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/04/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-04 21:03:28" itemprop="dateCreated datePublished" datetime="2021-03-04T21:03:28+08:00">2021-03-04</time>
+            </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -176,124 +521,184 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/04/hello-world/" data-id="ckm1g9h300005g4pzgzf4e6mm" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Author</p>
+  <div class="site-description" itemprop="description">我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ioa-audio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ioa-audio" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
   </div>
-  
-</article>
-
-
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/">语音信号处理</a></li></ul>
-    </div>
-  </div>
+<script src="/js/schemes/pisces.js"></script>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Speech-Enhancement-DSP-and-DL-Hybrid/" rel="tag">-Speech Enhancement -DSP and DL Hybrid</a></li></ul>
-    </div>
-  </div>
+<script src="/js/next-boot.js"></script>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Speech-Enhancement-DSP-and-DL-Hybrid/" style="font-size: 10px;">-Speech Enhancement -DSP and DL Hybrid</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/03/05/RNNoise/">RNNoise</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/04/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="作者: Kelan KuangEmail: &amp;#107;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#x67;&amp;#107;&amp;#x65;&amp;#108;&amp;#x61;&amp;#x6e;&amp;#64;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#105;&amp;#111;&amp;#97;&amp;#x2e;&amp;#x61;&amp;#x63;&amp;#x2e;&amp;#x63;&amp;#x6e; Multi-Channel Speech Enhancemen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TriU-Net demo">
+<meta property="og:url" content="http://example.com/2023/03/20/TriU-Net_demo/index.html">
+<meta property="og:site_name" content="KKL的博客">
+<meta property="og:description" content="作者: Kelan KuangEmail: &amp;#107;&amp;#x75;&amp;#97;&amp;#x6e;&amp;#x67;&amp;#107;&amp;#x65;&amp;#108;&amp;#x61;&amp;#x6e;&amp;#64;&amp;#109;&amp;#x61;&amp;#x69;&amp;#x6c;&amp;#46;&amp;#105;&amp;#111;&amp;#97;&amp;#x2e;&amp;#x61;&amp;#x63;&amp;#x2e;&amp;#x63;&amp;#x6e; Multi-Channel Speech Enhancemen">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_babble_snr-5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_f16_snr-5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_babble_snr-5_pesq1.09_1.36.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_babble_snr-5_pesq1.06_1.27.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_f16_snr-5_pesq1.06_1.3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_f16_snr-5_pesq1.04_1.25.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_babble_snr-5_pesq1.09_1.27.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_babble_snr-5_pesq1.06_1.33.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_f16_snr-5_pesq1.06_1.37.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_f16_snr-5_pesq1.04_1.41.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_babble_snr-5_pesq1.09_1.24.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_babble_snr-5_pesq1.06_1.23.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_f16_snr-5_pesq1.06_1.35.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_f16_snr-5_pesq1.04_1.47.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_babble_snr-5_pesq1.09_1.42.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_babble_snr-5_pesq1.06_1.26.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_f16_snr-5_pesq1.06_1.6.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_f16_snr-5_pesq1.04_1.77.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_babble_snr-5_pesq1.09_1.7.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_babble_snr-5_pesq1.06_1.65.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_f16_snr-5_pesq1.06_1.84.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_f16_snr-5_pesq1.04_1.9.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_noisy.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_noisy.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_clean.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_EaBNet.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_EaBNet.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_FaSNet.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_FaSNet.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_ModelA.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_ModelA.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_TriU-Net.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_TriU-Net.jpg">
+<meta property="article:published_time" content="2023-03-20T11:12:21.000Z">
+<meta property="article:modified_time" content="2023-03-20T11:13:07.755Z">
+<meta property="article:author" content="Kelan Kuang">
+<meta property="article:tag" content="-Speech Enhancement -Beamformer -DNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg">
+
+<link rel="canonical" href="http://example.com/2023/03/20/TriU-Net_demo/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>TriU-Net demo | KKL的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">KKL的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/20/TriU-Net_demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Author">
+      <meta itemprop="description" content="我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KKL的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TriU-Net demo
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-20 19:12:21 / 修改时间：19:13:07" itemprop="dateCreated datePublished" datetime="2023-03-20T19:12:21+08:00">2023-03-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%AD%E9%9F%B3%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">语音信号处理</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>作者: Kelan Kuang<br>Email: <a href="mailto:&#107;&#x75;&#97;&#x6e;&#x67;&#107;&#x65;&#108;&#x61;&#x6e;&#64;&#109;&#x61;&#x69;&#x6c;&#46;&#105;&#111;&#97;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#x6e;">&#107;&#x75;&#97;&#x6e;&#x67;&#107;&#x65;&#108;&#x61;&#x6e;&#64;&#109;&#x61;&#x69;&#x6c;&#46;&#105;&#111;&#97;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#x6e;</a></p>
+<h1 id="Multi-Channel-Speech-Enhancement-results"><a href="#Multi-Channel-Speech-Enhancement-results" class="headerlink" title="Multi-Channel Speech Enhancement results"></a>Multi-Channel Speech Enhancement results</h1><p>This repo shows enhanced speech of TriU-Net and other models.</p>
+<h2 id="Real-recordings"><a href="#Real-recordings" class="headerlink" title="Real recordings"></a>Real recordings</h2><p>SNR: -5 dB</p>
+<p>Spk 1 is a 24-year-old male, while spk 2 is a 24-year-old female. Both spk 1 and spk 2 speek in Mandarin. </p>
+<table>
+  <tbody>
+    <tr>
+        <th>Signals </th>
+        <th>Spk 1 babble</th>
+        <th>Spk 2 babble</th>
+        <th>Spk 1 f16</th>
+        <th>Spk 2 f16</th>
+    </tr>
+    <tr>
+      <td>noise</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/9ULA_synth_kkl_babble_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/9ULA_synth_yzh_babble_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_kkl_babble_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/9ULA_synth_kkl_f16_snr-5.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_synth_yzh_f16_snr-5.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/9ULA_synth_yzh_f16_snr-5.wav" controls></td>
+    </tr>
+    <tr>
+      <td>clean</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/9ULA_kkl_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/9ULA_yzh_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_kkl_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/9ULA_kkl_clean.wav" controls></td>      
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/9ULA_yzh_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/9ULA_yzh_clean.wav" controls></td>
+    </tr>
+    <tr>
+      <td>oracl MB-MVDR</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_babble_snr-5_pesq1.09_1.36.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_oracle_MBMVDR_kkl_babble_snr-5_pesq1.09_1.36.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_babble_snr-5_pesq1.06_1.27.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_oracle_MBMVDR_yzh_babble_snr-5_pesq1.06_1.27.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_kkl_f16_snr-5_pesq1.06_1.3.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_oracle_MBMVDR_kkl_f16_snr-5_pesq1.06_1.3.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_oracle_MBMVDR_yzh_f16_snr-5_pesq1.04_1.25.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_oracle_MBMVDR_yzh_f16_snr-5_pesq1.04_1.25.wav" controls></td>
+    </tr>
+    <tr>
+      <td>EaBNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_babble_snr-5_pesq1.09_1.27.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_EaBNet_kkl_babble_snr-5_pesq1.09_1.27.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_babble_snr-5_pesq1.06_1.33.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_EaBNet_yzh_babble_snr-5_pesq1.06_1.33.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_kkl_f16_snr-5_pesq1.06_1.37.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_EaBNet_kkl_f16_snr-5_pesq1.06_1.37.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_EaBNet_yzh_f16_snr-5_pesq1.04_1.41.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_EaBNet_yzh_f16_snr-5_pesq1.04_1.41.wav" controls></td>
+    </tr>
+    <tr>
+      <td>FaSNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_babble_snr-5_pesq1.09_1.24.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_FaSNet_kkl_babble_snr-5_pesq1.09_1.24.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_babble_snr-5_pesq1.06_1.23.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_FaSNet_yzh_babble_snr-5_pesq1.06_1.23.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_kkl_f16_snr-5_pesq1.06_1.35.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_FaSNet_kkl_f16_snr-5_pesq1.06_1.35.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_FaSNet_yzh_f16_snr-5_pesq1.04_1.47.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_FaSNet_yzh_f16_snr-5_pesq1.04_1.47.wav" controls></td>
+    </tr>
+    <tr>
+      <td>Model A</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_babble_snr-5_pesq1.09_1.42.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_ModelA_kkl_babble_snr-5_pesq1.09_1.42.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_babble_snr-5_pesq1.06_1.26.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_ModelA_yzh_babble_snr-5_pesq1.06_1.26.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_kkl_f16_snr-5_pesq1.06_1.6.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_ModelA_kkl_f16_snr-5_pesq1.06_1.6.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_ModelA_yzh_f16_snr-5_pesq1.04_1.77.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_ModelA_yzh_f16_snr-5_pesq1.04_1.77.wav" controls></td>
+    </tr>
+    <tr>
+        <td><b>TriU-Net</b></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_babble_snr-5_pesq1.09_1.7.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/babble/real_enh_TriU-Net_kkl_babble_snr-5_pesq1.09_1.7.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_babble_snr-5_pesq1.06_1.65.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/babble/real_enh_TriU-Net_yzh_babble_snr-5_pesq1.06_1.65.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_kkl_f16_snr-5_pesq1.06_1.84.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk1/f16/real_enh_TriU-Net_kkl_f16_snr-5_pesq1.06_1.84.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/real_enh_TriU-Net_yzh_f16_snr-5_pesq1.04_1.9.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/real%20recording/spk2/f16/real_enh_TriU-Net_yzh_f16_snr-5_pesq1.04_1.9.wav" controls></td>
+    </tr>
+  </tbody>
+  <colgroup>
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+  </colgroup>
+</table>
+
+
+
+
+
+
+<h2 id="Synthetic-Data"><a href="#Synthetic-Data" class="headerlink" title="Synthetic Data"></a>Synthetic Data</h2><table>
+  <tbody>
+    <tr>
+        <th>Signals </th>
+        <th>Spk 1 SNR:-5.36 dB</th>
+        <th>Spk 2 SNR:-3.43 dB</th>
+    </tr>
+    <tr>
+      <td>noise</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_noisy.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_noisy.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_noisy.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_noisy.wav" controls></td>
+    </tr>
+    <tr>
+      <td>clean</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_clean.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_clean.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_clean.wav" controls></td>
+    </tr>
+    <tr>
+      <td>EaBNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_EaBNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_EaBNet.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_EaBNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_EaBNet.wav" controls></td>
+    </tr>
+    <tr>
+      <td>FaSNet</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_FaSNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_FaSNet.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_FaSNet.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_FaSNet.wav" controls></td>
+    </tr>
+    <tr>
+      <td>Model A</td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_ModelA.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_ModelA.wav" controls></td>
+      <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_ModelA.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_ModelA.wav" controls></td>
+    </tr>
+    <tr>
+        <td><b>TriU-Net</b></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/1_sir-5.36dB_noisyR0.95_TriU-Net.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk1/1_sir-5.36dB_noisyR0.95_TriU-Net.wav" controls></td>
+        <td><img src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/spectrograms/4_sir-3.43dB_noisyR0.67_TriU-Net.jpg"><audio src="https://raw.githubusercontent.com/CaA23187/TriU-Net_demo/main/test%20set/spk2/4_sir-3.43dB_noisyR0.67_TriU-Net.wav" controls></td>
+    </tr>
+  </tbody>
+  <colgroup>
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+    <col style="width: 5%;">
+  </colgroup>
+</table>
+
+
+
+
+
+
+
+
+
+
+<h2 id="Other-samples"><a href="#Other-samples" class="headerlink" title="Other samples"></a>Other samples</h2><p>Other SNR scenarios  See <a target="_blank" rel="noopener" href="https://github.com/CaA23187/TriU-Net_demo">https://github.com/CaA23187/TriU-Net_demo</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Speech-Enhancement-Beamformer-DNN/" rel="tag"># -Speech Enhancement -Beamformer -DNN</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/05/RNNoise/" rel="prev" title="RNNoise">
+      <i class="fa fa-chevron-left"></i> RNNoise
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Multi-Channel-Speech-Enhancement-results"><span class="nav-number">1.</span> <span class="nav-text">Multi-Channel Speech Enhancement results</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Real-recordings"><span class="nav-number">1.1.</span> <span class="nav-text">Real recordings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synthetic-Data"><span class="nav-number">1.2.</span> <span class="nav-text">Synthetic Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-samples"><span class="nav-number">1.3.</span> <span class="nav-text">Other samples</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Author</p>
+  <div class="site-description" itemprop="description">我是Kelan Kuang (匡柯澜), 研究方向为多通道语音增强</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ioa-audio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ioa-audio" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Author</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
